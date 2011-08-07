@@ -11,7 +11,7 @@
  *
  */
  #include "qt602240.h"
-
+ #include <linux/bln.h>
 /******************************************************************************
 *
 *
@@ -192,6 +192,24 @@ static ssize_t key_led_store(struct device *dev, struct device_attribute *attr,
 static DEVICE_ATTR(brightness, S_IRUGO | S_IWUSR, NULL, key_led_store);
 
 #endif      //KEY_LED_CONTROL
+
+#ifdef CONFIG_GENERIC_BLN
+static void p1_touchkey_bln_enable(void)
+{
+   init_led();
+   touch_led_on(1);
+}
+
+static void p1_touchkey_bln_disable(void)
+{
+  touch_led_on(false);
+}
+
+static struct bln_implementation p1_touchkey_bln = {
+  .enable = p1_touchkey_bln_enable,
+  .disable = p1_touchkey_bln_disable,
+};
+#endif
 
 #if defined(DRIVER_FILTER)
 #if defined (CONFIG_TARGET_LOCALE_KOR) || defined (CONFIG_TARGET_LOCALE_USAGSM)
@@ -1492,6 +1510,10 @@ static int qt602240_initialize(struct qt602240_data *data)
 	calibrate_chip(data);
 
 	QT602240_Multitouch_Threshold_High(data);
+
+	#ifdef CONFIG_GENERIC_BLN
+		register_bln_implementation(&p1_touchkey_bln);
+	#endif
 
 	return 0;
 }
