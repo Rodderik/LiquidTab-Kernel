@@ -24,6 +24,10 @@
 
 #define SUBJECT "wm8994_p1.c"
 
+#ifdef CONFIG_SND_VOODOO
+#include "wm8994_voodoo.h"
+#endif
+
 
 //------------------------------------------------
 // Definitions of tunning volumes for wm8994
@@ -1234,6 +1238,9 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 	{
 		msleep(300);
 	}
+#ifdef CONFIG_SND_VOODOO_RECORD_PRESETS
+	voodoo_hook_record_main_mic();
+#endif
 }
 
 void wm8994_record_bluetooth(struct snd_soc_codec *codec)
@@ -1859,6 +1866,9 @@ void wm8994_set_playback_speaker(struct snd_soc_codec *codec)
 	val |= WM8994_AIF1DAC1R_TO_DAC1R;
 	wm8994_write(codec,WM8994_DAC1_RIGHT_MIXER_ROUTING ,val);
 
+#ifdef CONFIG_SND_VOODOO
+	voodoo_hook_playback_speaker();
+#endif
 
 	//Enbale bias,vmid and Left speaker
 	val = wm8994_read(codec,WM8994_POWER_MANAGEMENT_1);
