@@ -1,7 +1,7 @@
 #/bin/bash +x
 # temporary build script to save me some typing...I'll do a proper one later
 
-WDIR="/home/rodderik/android_kernel_samsung_sprinttab"
+WDIR="/home/rodderik/LiquidTab-Kernel"
 CC="/usr/local/toolchain/arm-2009q3/bin/arm-none-linux-gnueabi-"
 DEFCONFIG="p1_defconfig"
 OUTNAME="p100kernel"
