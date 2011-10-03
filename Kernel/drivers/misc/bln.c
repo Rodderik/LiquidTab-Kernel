@@ -22,7 +22,7 @@ static bool bln_ongoing = false; /* ongoing LED Notification */
 static int bln_blink_state = 0;
 static bool bln_suspended = false; /* is system suspended */
 static struct bln_implementation *bln_imp = NULL;
-static bool in_kernel_blink = false;
+static bool in_kernel_blink = true;
 static uint32_t blink_count;
 
 void bl_timer_callback(unsigned long data);

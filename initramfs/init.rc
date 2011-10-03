@@ -451,7 +451,11 @@ on boot
 # for datarouter
     chown system system /dev/ttyGS0
     chown system system /dev/dun
-# +++++++++++++++++++++++++++++++++++++++++++    
+# +++++++++++++++++++++++++++++++++++++++++++
+
+# bln - system patch run & wait
+    start blnpatch
+ 	write /data/sync_fifo sync
 
     class_start default
 
@@ -508,6 +512,12 @@ on property:persist.service.adb.enable=0
 
 on property:persist.service.slate_mode=0
     write /sys/class/power_supply/battery/batt_slate_mode 0
+
+# bln - system patch service
+service blnpatch /sbin/install_bln_liblights.sh
+    user root
+    oneshot
+    disabled
 
 # Run Custom Initialization
 service custom_init /sbin/custom_init.sh
