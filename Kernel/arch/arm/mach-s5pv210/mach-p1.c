@@ -1737,7 +1737,7 @@ static int isx005_power_on(void)
 	/* LDO on */
 	int err;
 
-	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L3);
+	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L8);
 	
 	/* can't do this earlier because regulators aren't available in
 	 * early boot
@@ -2041,7 +2041,7 @@ static int s5k6aafx_power_on(void)
 	/* LDO on */
 	int err = 0;
 
-	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L3);
+	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L8);
 	
 	/* can't do this earlier because regulators aren't available in
 	 * early boot
@@ -2350,7 +2350,7 @@ static int s5k5ccgx_power_on(void)
 	/* LDO on */
 	int err;
 	
-	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L3);
+	s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_2, L8);
 	
 	/* can't do this earlier because regulators aren't available in
 	 * early boot
