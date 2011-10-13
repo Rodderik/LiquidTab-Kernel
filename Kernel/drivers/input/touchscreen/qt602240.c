@@ -12,6 +12,9 @@
  */
  #include "qt602240.h"
  #include <linux/bln.h>
+
+#define _SUPPORT_TOUCH_AMPLITUDE_
+
 /******************************************************************************
 *
 *
@@ -518,8 +521,8 @@ static int QT602240_Multitouch_Config_Init(struct qt602240_data *data)
     touchscreen_config.ysize = 0x0b;
 
     touchscreen_config.akscfg = 1;
-    touchscreen_config.blen = 0x00;         // Gain of the analog circuits in front of the ADC [7:4]
-    touchscreen_config.tchthr = 28;//0x27;       // touch Threshold value
+    touchscreen_config.blen = 0x0f;//0x00;         // Gain of the analog circuits in front of the ADC [7:4]
+    touchscreen_config.tchthr = 22;//0x27;       // touch Threshold value
     touchscreen_config.orient = 0x04;       // 0x4 : Invert Y, 0x2 : Invert X, 0x1 : Switch
 
     touchscreen_config.mrgtimeout = 0x00;
@@ -530,8 +533,8 @@ static int QT602240_Multitouch_Config_Init(struct qt602240_data *data)
 #else
     touchscreen_config.movfilter = 0x0b;              // Filter Limit[6:4] , Adapt threshold [3:0]
 #endif
-    touchscreen_config.numtouch= 0x05;
-    touchscreen_config.tchdi = 0x02;
+    touchscreen_config.numtouch= 0x0a;
+    touchscreen_config.tchdi = 0x01;
     touchscreen_config.mrghyst = 0x5;               // Merge hysteresis
     touchscreen_config.mrgthr = 0x5;//0xa            // Merge threshold
     touchscreen_config.amphyst = 0x0a;              // Amplitude hysteresis
