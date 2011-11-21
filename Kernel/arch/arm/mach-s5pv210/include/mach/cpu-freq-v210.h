@@ -18,7 +18,7 @@
  * APLL M,P,S value for target frequency
  **/
 #define APLL_VAL_1600	((1<<31)|(200<<16)|(3<<8)|(1))
-#define APLL_VAL_1500	((1<<31)|(375<<16)|(6<<8)|(1))
+#define APLL_VAL_1500	((1<<31)|(188<<16)|(3<<8)|(1))
 #define APLL_VAL_1400	((1<<31)|(175<<16)|(3<<8)|(1))
 #define APLL_VAL_1300	((1<<31)|(325<<16)|(6<<8)|(1))
 #define APLL_VAL_1200	((1<<31)|(150<<16)|(3<<8)|(1))
@@ -28,19 +28,17 @@
 #define APLL_VAL_600    ((1<<31)|(75<<16)|(3<<8)|(1))
 
 enum perf_level {
-	L0 = 0,	// 1.6GHz
-	L1,	// 1.5GHz
-	L2,	// 1.4GHz
-	L3,	// 1.3GHz
-	L4,	// 1.2GHz
-	L5,	// 1.1GHz
-	L6,	// 1.0GHz
-	L7,	// 800MHz
-	L8,	// 600MHz
-	L9,	// 400MHz
-	L10,	// 200MHz
-	L11,	// 100MHz
-	MAX_PERF_LEVEL = L11,
+	L0 = 0,	// 1.4GHz
+	L1,	// 1.3GHz
+	L2,	// 1.2GHz
+	L3,	// 1.1GHz
+	L4,	// 1.0GHz
+	L5,	// 800MHz
+	L6,	// 600MHz
+	L7,	// 400MHz
+	L8,	// 200MHz
+	L9,	// 100MHz
+	MAX_PERF_LEVEL = L9,
 };
 
 #define SLEEP_FREQ      (600 * 1000) /* Use 600MHz when entering sleep */
